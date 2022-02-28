@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.awt.print.Book;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -16,14 +17,15 @@ public class Main {
 
     public static void main(String[] args) throws IOException, ParseException {
         Scanner input = new Scanner(System.in);
-        System.out.println("Do you want to View All Books in our Library");
+        System.out.println("Do you want to View All Books in our Library (Enter yes or no)");
         Boolean responseBool = false;
         String response1 = input.nextLine().toLowerCase();
         if (response1.equals("yes")) {
             responseBool = true;
-            input.close();
+            System.out.println();;
+            System.out.println();
         } else {
-            input.close();
+            System.out.println();
             System.out.println("Thanks for visiting our Library");
         }
 
@@ -39,50 +41,47 @@ public class Main {
 
                 String Title = (String) books.get("Title");
                 System.out.println("Book " + BookId + ": " + Title);
-
-//                String Author = (String) books.get("Author");
-//                System.out.println("Author: " + Author);
-//
-//                String Genre = (String) books.get("Genre");
-//                System.out.println("Genre: " + Genre);
-//
-//                String SubGenre = (String) books.get("SubGenre");
-//                System.out.println("SubGenre: " + SubGenre);
-//
-//                String Publisher = (String) books.get("Publisher");
-//                System.out.println("Publisher: " + Publisher);
+                
                 System.out.println();
 
             }
 
-            Scanner input2 = new Scanner(System.in);
+            System.out.println("Do You want to view Book Data (Enter yes or no)");
 
-            System.out.println("Do You wan to View a specific Book");
-
-            String response2 = input2.nextLine().toLowerCase();
+            String response2 = input.nextLine().toLowerCase();
 
 
 
             if (response2.equals("yes")) {
                 responseBool = true;
-                input.close();
+                System.out.println();
+            }
+            else{
+                System.out.println("Thanks for visiting our Library");
             }
 
             if (responseBool == true) {
-            System.out.println("Please Enter a Book Name or ID");
             for (Object o : jsonArray) {
                 JSONObject books = (JSONObject) o;
                 long BookId = (long) books.get("Number");
 
-                String Title = (String) books.get("Title");
+                  String Title = (String) books.get("Title");
+                  System.out.println("Book " + BookId + ": " + Title);
 
-                if ((response2.equals(Title)) || (response2.equals(BookId))) {
-                    System.out.println("hey");
-                    input2.close();
-                } else {
-                    input2.close();
-                    System.out.println("Please Enter a Valid Book Name or ID");
-                }
+                  String Author = (String) books.get("Author");
+                  System.out.println("Author: " + Author);
+
+                  String Genre = (String) books.get("Genre");
+                  System.out.println("Genre: " + Genre);
+
+                  String SubGenre = (String) books.get("SubGenre");
+                  System.out.println("SubGenre: " + SubGenre);
+
+                  String Publisher = (String) books.get("Publisher");
+                  System.out.println("Publisher: " + Publisher);
+
+                  System.out.println();  
+
             }
             }
 
